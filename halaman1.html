@@ -5,14 +5,46 @@
   <link rel="stylesheet" type="text/css" href="css.css">
   <link rel="shortcut icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" type="text/css" href="background1.css">
+  <script language="javascript" type="text/javascript">
+    var timerid = 0;
+    var images = new Array("bg1.jpg",
+                "bg2.jpg",
+                "bg3.jpg",
+                "bg4.jpg");
+               
+    var countimages = 0;
+    function startTime()
+    {
+        if(timerid)
+        {
+            timerid = 0;
+        }
+        var tDate = new Date();
+        
+        if(countimages == images.length)
+        {
+            countimages = 0;
+        }
+        if(tDate.getSeconds() % 1 == 0)
+        {
+            document.getElementById("img1").src = images[countimages];
+        }
+        countimages++;
+        
+        timerid = setTimeout("startTime()", 1000);
+    }
+    </script>
 </head>
 
-<body>
+<body onload="startTime();">
+  <div class="bg">
+    <img id="img1" src="bg1.jpg">
+  </div> 
   <div class="explorejbr">
     <h1> EXPLORE JEMBER </h1>
   </div>
   <div class="exploretxt">
     <a href="halaman1.html"> Home</a> | <a href="halaman2.html">About</a> | <a href="halaman3.html">Gallery</a> | <a href="halaman4.html">Contact</a>
-  </div>   
+  </div>  
 </body>
 </html>
